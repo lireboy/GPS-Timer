@@ -4,27 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222831"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/currentTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="00:00:00"
-        android:textSize="24sp"
+        android:textColor="#ECECEC"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:text="36"
         android:textAlignment="center"
+        android:textColor="#ECECEC"
+        android:textColorLink="#ECECEC"
         android:textSize="150sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,10 +40,11 @@
         app:layout_constraintVertical_bias="0.35" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/kmh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="km/h"
+        android:textColor="#ECECEC"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,24 +53,33 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnStart"
         android:layout_width="300dp"
         android:layout_height="100dp"
+        app:backgroundTint="#F2A365"
         android:text="START"
+        android:textColor="#ECECEC"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/speed"
+
+
+        />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSettings"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="Settings"
+        android:textColor="#ECECEC"
+        android:textStyle="bold"
+        app:backgroundTint="#F2A365"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
