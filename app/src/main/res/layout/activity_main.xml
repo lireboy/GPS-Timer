@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222831"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/currentTimer"
+        android:id="@+id/tvCurrentTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="00:00:00"
-        android:textColor="#ECECEC"
+        android:textColor="@color/textColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,14 +23,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/speed"
+        android:id="@+id/tvSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="36"
+        android:text="0"
         android:textAlignment="center"
-        android:textColor="#ECECEC"
-        android:textColorLink="#ECECEC"
+        android:textColor="@color/textColor"
         android:textSize="150sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,11 +39,11 @@
         app:layout_constraintVertical_bias="0.35" />
 
     <TextView
-        android:id="@+id/kmh"
+        android:id="@+id/tvSpeedUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="km/h"
-        android:textColor="#ECECEC"
+        android:textColor="@color/textColor"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,27 +55,25 @@
         android:id="@+id/btnStart"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        app:backgroundTint="#F2A365"
-        android:text="START"
-        android:textColor="#ECECEC"
+        android:text="@string/start"
+        android:textColor="@color/textColor"
         android:textSize="36sp"
         android:textStyle="bold"
+        app:backgroundTint="@color/primaryAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speed"
-
-
+        app:layout_constraintTop_toBottomOf="@+id/tvSpeed"
         />
 
     <Button
         android:id="@+id/btnSettings"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Settings"
-        android:textColor="#ECECEC"
+        android:text="@string/settings"
+        android:textColor="@color/textColor"
         android:textStyle="bold"
-        app:backgroundTint="#F2A365"
+        app:backgroundTint="@color/primaryAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

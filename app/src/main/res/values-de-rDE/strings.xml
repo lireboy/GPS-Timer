@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GPSTimer</string>
+    <string name="settings">Einstellungen</string>
+    <string name="start">Start</string>
+    <string name="unit">Geschwindigkeitseinheit</string>
+    <string name="unitkmh">Kmh</string>
+    <string name="unitmph">Mph</string>
+    <string name="measurement">Messbereich</string>
+    <string name="startSpeed">Startgeschwindigkeit</string>
+    <string name="targetSpeed">Zielgeschwindigkeit</string>
+</resources>
