@@ -2,10 +2,13 @@
     <string name="app_name">GPSTimer</string>
     <string name="settings">Settings</string>
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
     <string name="unit">Unit of measure</string>
-    <string name="unitkmh">Kmh</string>
-    <string name="unitmph">Mph</string>
+    <string translatable="false" name="unitkmh">km/h</string>
+    <string translatable="false" name="unitmph">mph</string>
     <string name="measurement">Speed measurement</string>
     <string name="startSpeed">Start Speed</string>
     <string name="targetSpeed">Target Speed</string>
+    <string translatable="false" name="minus10">-10</string>
+    <string translatable="false" name="plus10">+10</string>
 </resources>

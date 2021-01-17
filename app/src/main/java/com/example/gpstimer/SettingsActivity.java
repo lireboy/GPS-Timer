@@ -1,31 +1,91 @@
 package com.example.gpstimer;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Build;
+import androidx.appcompat.widget.SwitchCompat;
 import android.os.Bundle;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    protected boolean init = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        Switch sw_units;
-        sw_units = findViewById(R.id.switchUnitSpeed);
 
+        SwitchCompat sw_units = findViewById(R.id.switchUnitSpeed);
+        sw_units.setChecked(MainActivity.unitKmh);
+        updateSwitch(sw_units);
+        sw_units.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            MainActivity.unitKmh = isChecked;
+            updateSwitch(sw_units);
+        });
 
+        Button btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(e -> finish());
 
+        EditText editStartSpeed = findViewById(R.id.editStartSpeed);
+        editStartSpeed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(!init && !String.valueOf(editable).equals("")){
+                    MainActivity.startSpeed = Integer.parseInt(String.valueOf(editable));
+                    MainActivity.setStartTargetSpeed();
+                }
+            }
+        });
+        EditText editTargetSpeed = findViewById(R.id.editTargetSpeed);
+        editTargetSpeed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(!init && !String.valueOf(editable).equals("")){
+                    MainActivity.targetSpeed = Integer.parseInt(String.valueOf(editable));
+                    MainActivity.setStartTargetSpeed();
+                }
+            }
+        });
+
+        editStartSpeed.setText(String.valueOf(MainActivity.startSpeed));
+        editTargetSpeed.setText(String.valueOf(MainActivity.targetSpeed));
+
+        Button btnMinusStart = findViewById(R.id.btnMinusStart);
+        btnMinusStart.setOnClickListener(e-> editStartSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editStartSpeed.getText())) - 10)));
+        Button btnPlusStart = findViewById(R.id.btnPlusStart);
+        btnPlusStart.setOnClickListener(e-> editStartSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editStartSpeed.getText())) + 10)));
+        Button btnMinusTarget = findViewById(R.id.btnMinusTarget);
+        btnMinusTarget.setOnClickListener(e-> editTargetSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editTargetSpeed.getText())) - 10)));
+        Button btnPlusTarget = findViewById(R.id.btnPlusTarget);
+        btnPlusTarget.setOnClickListener(e-> editTargetSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editTargetSpeed.getText())) + 10)));
+
+        init = false;
+    }
+
+    private void updateSwitch(SwitchCompat sw){
+        String unit = MainActivity.unitKmh ? "km/h":"mph";
+        sw.setText(unit);
     }
 }

@@ -10,7 +10,7 @@
     tools:context=".SettingsActivity">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnBack"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="@string/settings"
         android:textColor="@color/textColor"
-        android:textSize="52dp"
+        android:textSize="52sp"
         android:textStyle="bold" />
 
     <Space
@@ -60,7 +60,7 @@
             android:textColor="@color/textColor"
             android:textSize="30sp" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchUnitSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/primaryAccent"
-                android:text="-10"
+                android:text="@string/minus10"
                 android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -134,16 +134,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
+                android:autofillHints="50"
                 android:backgroundTint="@color/textColor"
                 android:ems="10"
+                android:hint="@string/startSpeed"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textColorHint="@color/textColor"
-                android:textColorLink="@color/textColor"
+                android:textColorHint="@color/hintTextColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="50" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnPlusStart"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/primaryAccent"
-                android:text="+10"
+                android:text="@string/plus10"
                 android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -184,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/primaryAccent"
-                android:text="-10"
+                android:text="@string/minus10"
                 android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -195,16 +195,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
+                android:autofillHints="100"
                 android:backgroundTint="@color/textColor"
                 android:ems="10"
+                android:hint="@string/targetSpeed"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textColorHint="@color/textColor"
-                android:textColorLink="@color/textColor"
+                android:textColorHint="@color/hintTextColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="100" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnPlusTarget"
@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/primaryAccent"
-                android:text="+10"
+                android:text="@string/plus10"
                 android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="bold"
