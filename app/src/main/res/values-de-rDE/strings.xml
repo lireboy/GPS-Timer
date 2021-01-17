@@ -8,4 +8,5 @@
     <string name="measurement">Messbereich</string>
     <string name="startSpeed">Startgeschwindigkeit</string>
     <string name="targetSpeed">Zielgeschwindigkeit</string>
+    <string name="leaderboard">Bestenliste</string>
 </resources>

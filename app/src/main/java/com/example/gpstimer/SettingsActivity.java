@@ -2,6 +2,8 @@ package com.example.gpstimer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -80,6 +82,12 @@ public class SettingsActivity extends AppCompatActivity {
         btnMinusTarget.setOnClickListener(e-> editTargetSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editTargetSpeed.getText())) - 10)));
         Button btnPlusTarget = findViewById(R.id.btnPlusTarget);
         btnPlusTarget.setOnClickListener(e-> editTargetSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editTargetSpeed.getText())) + 10)));
+
+        Button btnLeaderboard = findViewById(R.id.btnLeaderboard);
+        btnLeaderboard.setOnClickListener(e -> {
+            Intent showTimeTableIntent = new Intent(this, ShowTimeTableActivity.class);
+            startActivity(showTimeTableIntent);
+        });
 
         init = false;
     }

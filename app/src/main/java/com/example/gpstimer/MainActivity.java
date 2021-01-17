@@ -1,33 +1,33 @@
 package com.example.gpstimer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Formatter;
-import java.util.Locale;
-import java.util.Timer;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.ViewModelProvider;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private TextView tvSpeed;
     private TextView tvSpeedUnit;
+    @SuppressLint("StaticFieldLeak")
     private static TextView tvStartTarget;
 
     private Button btnStart;
@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ShowTimeTableActivity.adapter = new TimeListAdapter(new TimeListAdapter.TimeDiff());
+        ShowTimeTableActivity.mTimeViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(TimeViewModel.class);
+        ShowTimeTableActivity.mTimeViewModel.getAllTimes().observe(this, ShowTimeTableActivity.adapter::submitList);
+
         tvSpeed = findViewById(R.id.tvSpeed);
         tvSpeedUnit = findViewById(R.id.tvSpeedUnit);
         tvStartTarget = findViewById(R.id.tvStartTarget);
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 stopwatch.stop();
                 timerRunning = false;
                 btnStart.setText(R.string.start);
+                ShowTimeTableActivity.mTimeViewModel.insert(new Time(stopwatch.returnTime(), "hhhhhhhhhhhhhhhhhhhhhhhhhh", String.valueOf(startSpeed), String.valueOf(targetSpeed), getCurrentDate()));
             }
             else{
                 stopwatch.reset();
@@ -81,6 +86,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         }
         this.onLocationChanged(null);
         setStartTargetSpeed();
+    }
+
+    private String getCurrentDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
     }
 
 

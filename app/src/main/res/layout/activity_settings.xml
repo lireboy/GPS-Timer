@@ -222,4 +222,17 @@
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/btnLeaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primaryAccent"
+        android:text="@string/leaderboard"
+        android:textSize="24sp"
+        app:icon="@drawable/ic_baseline_dehaze_24" />
+
 </LinearLayout>

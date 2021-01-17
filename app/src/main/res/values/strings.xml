@@ -4,11 +4,12 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="unit">Unit of measure</string>
-    <string translatable="false" name="unitkmh">km/h</string>
-    <string translatable="false" name="unitmph">mph</string>
+    <string name="unitkmh" translatable="false">km/h</string>
+    <string name="unitmph" translatable="false">mph</string>
     <string name="measurement">Speed measurement</string>
     <string name="startSpeed">Start Speed</string>
     <string name="targetSpeed">Target Speed</string>
-    <string translatable="false" name="minus10">-10</string>
-    <string translatable="false" name="plus10">+10</string>
+    <string name="minus10" translatable="false">-10</string>
+    <string name="plus10" translatable="false">+10</string>
+    <string name="leaderboard">Leaderboard</string>
 </resources>
