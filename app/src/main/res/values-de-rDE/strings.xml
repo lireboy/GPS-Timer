@@ -12,5 +12,5 @@
     <string name="sortLowTime">Niedrigste Zeit</string>
     <string name="sortHighTime">Höchste Zeit</string>
     <string name="sortMostRec">Neueste Zeit</string>
-    <string name="sortMostDat">Älteste Zeit</string>
+    <string name="sortLeastRec">Älteste Zeit</string>
 </resources>

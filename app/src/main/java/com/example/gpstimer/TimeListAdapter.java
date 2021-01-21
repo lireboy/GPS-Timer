@@ -21,10 +21,7 @@ public class TimeListAdapter extends ListAdapter<Time, com.example.gpstimer.Time
     @Override
     public void onBindViewHolder(@NonNull com.example.gpstimer.TimeViewHolder holder, int position) {
         Time current = getItem(position);
-        if(!current.getVehicle().equals(""))
-            holder.bind(current.getTime() + " [" + current.getStart() + " -> " + current.getTarget() + "]" + "\n" + current.getVehicle() + "\n" + current.getDate(), current.getId());
-        else
-            holder.bind(current.getTime() + " [" + current.getStart() + " -> " + current.getTarget() + "]" + "\n" + current.getDate(), current.getId());
+        holder.bind(current);
     }
 
     static class TimeDiff extends DiffUtil.ItemCallback<Time> {

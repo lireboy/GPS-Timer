@@ -1,5 +1,6 @@
 package com.example.gpstimer;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TimeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     private final TextView timeItemView;
+    private Time time;
     private int id;
     private final ImageButton btnDelete;
 
@@ -23,9 +25,14 @@ public class TimeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         btnDelete.setOnClickListener(this);
     }
 
-    public void bind(String text, int id) {
-        timeItemView.setText(text);
-        this.id = id;
+    @SuppressLint("SetTextI18n")
+    public void bind(Time time) {
+        if(!time.getVehicle().equals(""))
+            timeItemView.setText(time.getTime() + " [" + time.getStart() + " -> " + time.getTarget() + "]" + "\n" + time.getVehicle() + "\n" + time.getDate());
+        else
+            timeItemView.setText(time.getTime() + " [" + time.getStart() + " -> " + time.getTarget() + "]" + "\n" + time.getDate());
+        this.time = time;
+        this.id = time.getId();
     }
 
     static com.example.gpstimer.TimeViewHolder create(ViewGroup parent) {

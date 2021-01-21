@@ -6,6 +6,9 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity(tableName = "time_table")
 public class Time implements Serializable {
@@ -63,6 +66,11 @@ public class Time implements Serializable {
         this.id = id;
     }
 
+    public long getTimeInMillis(){
+        String[] data = this.time.split(":");
+        return Integer.parseInt(data[0]) * 60000 + Integer.parseInt(data[1]) * 1000 + Integer.parseInt(data[2]) * 100;
+    }
+
     public String getTime() {
         return time;
     }
@@ -93,6 +101,10 @@ public class Time implements Serializable {
 
     public void setTarget(String target) {
         this.target = target;
+    }
+
+    public Date getDateAsDate() throws ParseException {
+        return new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(this.date);
     }
 
     public String getDate() {

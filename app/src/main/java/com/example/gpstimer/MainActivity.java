@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         tvSpeed.setText(String.valueOf((int) currentSpeed));
         tvSpeedUnit.setText(unit);
-        Log.d("Location","Location changed");
     }
 
     private void doStuff() {
