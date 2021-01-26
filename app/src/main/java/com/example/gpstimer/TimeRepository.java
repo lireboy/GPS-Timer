@@ -4,7 +4,9 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class TimeRepository {
 
@@ -48,5 +50,15 @@ public class TimeRepository {
             retTime[0] = new Time(r.getId(), r.getTime(), r.getVehicle(), r.getStart(), r.getTarget(), r.getDate());
         });
         return retTime[0];
+    }
+
+    LiveData<List<Time>> getTimeFilter(int startMin, int startMax, int targetMin, int targetMax, ArrayList<String> vehicles){
+        LiveData<List<Time>> times = mTimeDao.getTimeFilter(startMin, startMax, targetMin, targetMax);
+        for(Time t : times.getValue()){
+            if(!vehicles.contains(t.getVehicle())){
+                times.getValue().remove(t);
+            }
+        }
+        return times;
     }
 }

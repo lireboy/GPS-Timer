@@ -138,7 +138,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     protected static void setStartTargetSpeed(){
-        tvStartTarget.setText(startSpeed + " -> " + targetSpeed);
+        if(tvStartTarget != null){
+            tvStartTarget.setText(startSpeed + " -> " + targetSpeed);
+        }
     }
 
 }

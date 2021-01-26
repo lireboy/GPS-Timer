@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
             updateSwitch(sw_units);
         });
 
-        Button btnBack = findViewById(R.id.btnBack);
+        ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(e -> finish());
 
         EditText editStartSpeed = findViewById(R.id.editStartSpeed);

@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TimeViewModel extends AndroidViewModel {
@@ -24,4 +25,8 @@ public class TimeViewModel extends AndroidViewModel {
     public void insert(Time time) { mRepository.insert(time); }
 
     public void delete(int id) { mRepository.delete(id);}
+
+    protected LiveData<List<Time>> getFilteredTimes(int startMin, int startMax, int targetMin, int targetMax, ArrayList<String> vehicles){
+        return mRepository.getTimeFilter(startMin, startMax, targetMin, targetMax, vehicles);
+    }
 }

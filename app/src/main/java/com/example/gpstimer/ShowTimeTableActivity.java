@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.text.ParseException;
@@ -27,6 +29,12 @@ public class ShowTimeTableActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        Button filter = findViewById(R.id.btnFilter);
+        filter.setOnClickListener(e -> {
+            Intent filterIntent = new Intent(this, FilterActivity.class);
+            startActivity(filterIntent);
+        });
+
         Spinner spinner = findViewById(R.id.spinner);
         String[] items = new String[]{getString(R.string.sortLowTime), getString(R.string.sortHighTime), getString(R.string.sortMostRec), getString(R.string.sortLeastRec)};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
@@ -34,7 +42,6 @@ public class ShowTimeTableActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("Test", adapterView.getSelectedItem().toString());
                 if(adapterView.getSelectedItem().toString().equals(getString(R.string.sortLowTime))){
                     sortTime(true);
                 }

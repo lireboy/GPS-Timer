@@ -13,4 +13,9 @@
     <string name="sortHighTime">Höchste Zeit</string>
     <string name="sortMostRec">Neueste Zeit</string>
     <string name="sortLeastRec">Älteste Zeit</string>
+    <string name="sortBy">Sort. nach:</string>
+    <string name="filter">Filter</string>
+    <string name="go_back">Zurück</string>
+    <string name="from">Von</string>
+    <string name="to">Bis</string>
 </resources>

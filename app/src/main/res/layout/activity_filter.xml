@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
+        android:text="@string/filter"
         android:textColor="@color/textColor"
         android:textSize="52sp"
         android:textStyle="bold" />
@@ -45,61 +45,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/unit"
-            android:textColor="@color/textColor"
-            android:textSize="30sp" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchUnitSpeed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/primaryAccent"
-            android:checked="true"
-            android:text="@string/unitkmh"
-            android:textColor="@color/textColor"
-            android:textSize="24sp"
-            android:thumbTint="@color/primaryAccent"
-            android:trackTint="@color/textColor" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/textColor"
-        android:orientation="horizontal">
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/measurement"
-            android:textColor="@color/textColor"
-            android:textSize="30sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -111,32 +61,24 @@
             android:textColor="@color/textColor"
             android:textSize="24sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnMinusStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primaryAccent"
-                android:text="@string/minus10"
-                android:textColor="@color/textColor"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:iconTint="@color/textColor" />
-
             <EditText
-                android:id="@+id/editStartSpeed"
+                android:id="@+id/editFilterStartMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="20"
                 android:autofillHints="50"
                 android:backgroundTint="@color/textColor"
-                android:ems="10"
-                android:hint="@string/startSpeed"
+                android:ems="5"
+                android:hint="@string/from"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
@@ -144,17 +86,25 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnPlusStart"
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/editFilterStartMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primaryAccent"
-                android:text="@string/plus10"
+                android:autofillHints="50"
+                android:backgroundTint="@color/textColor"
+                android:ems="5"
+                android:hint="@string/to"
+                android:inputType="number"
+                android:textAlignment="center"
                 android:textColor="@color/textColor"
+                android:textColorHint="@color/hintTextColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                app:iconTint="@color/textColor" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -172,32 +122,24 @@
             android:textColor="@color/textColor"
             android:textSize="24sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnMinusTarget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primaryAccent"
-                android:text="@string/minus10"
-                android:textColor="@color/textColor"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:iconTint="@color/textColor" />
-
             <EditText
-                android:id="@+id/editTargetSpeed"
+                android:id="@+id/editFilterTargetMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="20"
-                android:autofillHints="100"
+                android:autofillHints="50"
                 android:backgroundTint="@color/textColor"
-                android:ems="10"
-                android:hint="@string/targetSpeed"
+                android:ems="5"
+                android:hint="@string/from"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
@@ -205,17 +147,25 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnPlusTarget"
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/editFilterTargetMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primaryAccent"
-                android:text="@string/plus10"
+                android:autofillHints="50"
+                android:backgroundTint="@color/textColor"
+                android:ems="5"
+                android:hint="@string/to"
+                android:inputType="number"
+                android:textAlignment="center"
                 android:textColor="@color/textColor"
+                android:textColorHint="@color/hintTextColor"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                app:iconTint="@color/textColor" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -225,14 +175,16 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
-    <Button
-        android:id="@+id/btnLeaderboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/primaryAccent"
-        android:text="@string/leaderboard"
-        android:textColor="@color/textColor"
-        android:textSize="24sp"
-        app:icon="@drawable/ic_baseline_dehaze_24" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/background"
+        android:paddingTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:listitem="@layout/recyclerview_filteritem" />
 
 </LinearLayout>
