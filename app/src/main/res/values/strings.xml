@@ -21,4 +21,7 @@
     <string name="go_back">Go back</string>
     <string name="from">From</string>
     <string name="to">To</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="selectVehicle">Select Vehicle</string>
+    <string name="addVehicle">Add Vehicle</string>
 </resources>

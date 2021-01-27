@@ -1,6 +1,5 @@
 package com.example.gpstimer;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,71 +14,70 @@ import java.util.List;
 
 public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<String> vehicles = new ArrayList<>();
-    private final LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private final List<String> vehicles = new ArrayList<>();
 
-    // data is passed into the constructor
-    VehicleRecyclerViewAdapter(Context context, List<Time> data) {
-        this.mInflater = LayoutInflater.from(context);
-        for(Time t : data){
-            if(!vehicles.contains(t.getVehicle())){
-                vehicles.add(t.getVehicle());
-            }
-            Log.d("Test", t.getVehicle());
+    /**
+     * Provide a reference to the type of views that you are using
+     * (custom ViewHolder).
+     */
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textView;
+
+        public ViewHolder(View view) {
+            super(view);
+            textView = (TextView) view.findViewById(R.id.textViewVehicle);
+        }
+
+        public TextView getTextView() {
+            return textView;
         }
     }
 
-    // inflates the row layout from xml when needed
+    /**
+     * Initialize the dataset of the Adapter.
+     *
+     * @param dataSet String[] containing the data to populate views to be used
+     * by RecyclerView.
+     */
+    public VehicleRecyclerViewAdapter(List<Time> dataSet) {
+        if(dataSet != null){
+
+            this.vehicles.add(dataSet.get(0).getVehicle());
+            for(String v : vehicles){
+                if(!this.vehicles.contains(v)){
+                    this.vehicles.add(v);
+                }
+            }
+        }
+
+        for(String v : vehicles){
+            Log.d("Test", v);
+        }
+    }
+
+    // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recyclerview_filteritem, parent, false);
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        // Create a new view, which defines the UI of the list item
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.recyclerview_filteritem, viewGroup, false);
+
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String vehicle = vehicles.get(position);
-        holder.myTextView.setText(vehicle);
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
+        viewHolder.getTextView().setText(vehicles.get(position));
     }
 
-    // total number of rows
+    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return vehicles.size();
-    }
-
-
-    // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            myTextView = itemView.findViewById(R.id.textViewVehicle);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
-    }
-
-    // convenience method for getting data at click position
-    String getVehicle(int id) {
-        return vehicles.get(id);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }

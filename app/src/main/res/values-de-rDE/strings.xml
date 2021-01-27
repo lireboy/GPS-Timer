@@ -18,4 +18,7 @@
     <string name="go_back">Zurück</string>
     <string name="from">Von</string>
     <string name="to">Bis</string>
+    <string name="vehicles">Fahrzeuge</string>
+    <string name="selectVehicle">Fahrzeugauswahl</string>
+    <string name="addVehicle">Fahrzeug hinzufügen</string>
 </resources>

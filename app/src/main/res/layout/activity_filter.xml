@@ -24,7 +24,7 @@
         android:layout_height="10dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewSelectVehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/filter"
@@ -41,7 +41,6 @@
         android:layout_height="1dp"
         android:background="@color/textColor"
         android:orientation="horizontal">
-
     </LinearLayout>
 
     <LinearLayout
@@ -171,20 +170,33 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/textColor"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicles"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:textSize="24sp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/recyclerviewFilter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/background"
         android:paddingTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:listitem="@layout/recyclerview_filteritem" />
 
 </LinearLayout>

@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected static int targetSpeed = 100;
     protected static boolean unitKmh = true;
 
+    protected static String activeVehicle = "unnamed";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

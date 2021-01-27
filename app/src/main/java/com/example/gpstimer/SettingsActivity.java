@@ -90,6 +90,12 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(showTimeTableIntent);
         });
 
+        Button btnSelectVehicle = findViewById(R.id.btnAddVehicle);
+        btnSelectVehicle.setOnClickListener(e -> {
+            Intent selectVehicleIntent = new Intent(this, SelectVehicleActivity.class);
+            startActivity(selectVehicleIntent);
+        });
+
         init = false;
     }
 
