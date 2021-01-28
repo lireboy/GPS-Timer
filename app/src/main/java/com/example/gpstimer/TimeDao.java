@@ -26,6 +26,6 @@ public interface TimeDao {
     @Query("DELETE FROM time_table WHERE id=:id")
     void delete(int id);
 
-    @Query("SELECT * FROM time_table WHERE start>=:startMin AND start<=:startMax AND target>=:targetMin AND target<=:targetMax")
-    LiveData<List<Time>> getTimeFilter(int startMin, int startMax, int targetMin, int targetMax);
+    /*@Query("SELECT * FROM time_table WHERE start>=:startMin AND start<=:startMax AND target>=:targetMin AND target<=:targetMax")
+    LiveData<List<Time>> getTimeFilter(int startMin, int startMax, int targetMin, int targetMax);*/
 }

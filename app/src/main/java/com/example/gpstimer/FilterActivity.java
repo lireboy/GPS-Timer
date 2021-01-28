@@ -20,7 +20,14 @@ public class FilterActivity extends AppCompatActivity {
         recyclerView.setAdapter(new VehicleRecyclerViewAdapter(ShowTimeTableActivity.mTimeViewModel.getAllTimes().getValue()));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ArrayList<String> test = new ArrayList<>();
+        test.add("Mazda RX7");
         ImageButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(e -> finish());
+        btnBack.setOnClickListener(e -> {
+            ShowTimeTableActivity.mTimeViewModel.filterTimes(0, 1000, 0, 1000, test);
+            ShowTimeTableActivity.adapter.notifyDataSetChanged();
+            //ShowTimeTableActivity.mTimeViewModel.resetFilter();
+            finish();
+        });
     }
 }

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 stopwatch.stop();
                 timerRunning = false;
                 btnStart.setText(R.string.start);
-                ShowTimeTableActivity.mTimeViewModel.insert(new Time(stopwatch.returnTime(), "hhhhhhhhhhhhhhhhhhhhhhhhhh", String.valueOf(startSpeed), String.valueOf(targetSpeed), getCurrentDate()));
+                ShowTimeTableActivity.mTimeViewModel.insert(new Time(stopwatch.returnTime(), activeVehicle, String.valueOf(startSpeed), String.valueOf(targetSpeed), getCurrentDate()));
             }
             else{
                 stopwatch.reset();

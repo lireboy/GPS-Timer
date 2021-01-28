@@ -41,17 +41,11 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
      */
     public VehicleRecyclerViewAdapter(List<Time> dataSet) {
         if(dataSet != null){
-
-            this.vehicles.add(dataSet.get(0).getVehicle());
-            for(String v : vehicles){
-                if(!this.vehicles.contains(v)){
-                    this.vehicles.add(v);
+            for(Time t : dataSet){
+                if(!this.vehicles.contains(t.getVehicle().toString())){
+                    this.vehicles.add(t.getVehicle().toString());
                 }
             }
-        }
-
-        for(String v : vehicles){
-            Log.d("Test", v);
         }
     }
 

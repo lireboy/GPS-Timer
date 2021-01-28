@@ -52,7 +52,7 @@ public class TimeRepository {
         return retTime[0];
     }
 
-    LiveData<List<Time>> getTimeFilter(int startMin, int startMax, int targetMin, int targetMax, ArrayList<String> vehicles){
+    /*LiveData<List<Time>> getTimeFilter(int startMin, int startMax, int targetMin, int targetMax, ArrayList<String> vehicles){
         LiveData<List<Time>> times = mTimeDao.getTimeFilter(startMin, startMax, targetMin, targetMax);
         for(Time t : times.getValue()){
             if(!vehicles.contains(t.getVehicle())){
@@ -60,5 +60,5 @@ public class TimeRepository {
             }
         }
         return times;
-    }
+    }*/
 }
