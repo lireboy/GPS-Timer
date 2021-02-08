@@ -3,14 +3,23 @@ package com.example.gpstimer;
 import android.os.Handler;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class Stopwatch {
 
-    private long secTenth = 0;
+    private int secTenth = 0;
     private boolean running = false;
     private String time = "00:00:0";
     private TextView tv;
+    private boolean init = true;
+    private boolean go = false;
+
+    private long secT;
+    private long secs;
+    private long mins;
+
 
     public Stopwatch(){
     }
@@ -26,9 +35,24 @@ public class Stopwatch {
     }
 
     public void reset(){
-        running = false;
-        time = "00:00:0";
-        secTenth = 0;
+        setup();
+    }
+
+    private void setup(){
+        running = true;
+        init = true;
+        time = "-00:03:0";
+        tv.setText(time);
+        secTenth = 30;
+        go = false;
+    }
+
+    public boolean isInit() {
+        return init;
+    }
+
+    public void setInc(boolean value){
+        this.init = value;
     }
 
     public void stop(){
@@ -39,26 +63,48 @@ public class Stopwatch {
         if(tv == null)
             return;
         final Handler handler = new Handler();
-        running = true;
         handler.post(new Runnable() {
             @Override
             public void run()
             {
                 if(running){
-                    long secT = secTenth % 10;
-                    long secs = (secTenth / 10) % 60;
-                    long mins = (secTenth / 10 / 60) % 60;
+                    secT = secTenth % 10;
+                    secs = (secTenth / 10) % 60;
+                    mins = (secTenth / 10 / 60) % 60;
 
-                    // Format the seconds into hours, minutes,
-                    // and seconds.
-                    time = String.format(Locale.getDefault(), "%02d:%02d:%01d", mins, secs, secT);
+                    if(!init && go){
+                        secTenth+=1;
+                        time = String.format(Locale.getDefault(), "%02d:%02d:%01d", mins, secs, secT);
+                    }
+                    else if(init && !go){
+                        secTenth-=1;
+                        time = String.format(Locale.getDefault(), "-%02d:%02d:%01d", mins, secs, secT);
+                    }
                     tv.setText(time);
-                    // Set the text view text.
-                    // If running is true, increment the
-                    // seconds variable.
-                    secTenth+=1;
-                    handler.postDelayed(this, 100);
+                    if(secTenth == 0){
+                        time = "00:00:0";
+                        init = false;
+                    }
+
+                    if(init && (MainActivity.currSpeed > MainActivity.startSpeed * 1.05 || MainActivity.currSpeed < MainActivity.startSpeed * 0.95)){
+                        setup();
+                    }
+                    if(!init && MainActivity.currSpeed < MainActivity.startSpeed * 0.95){
+                        setup();
+                    }
+                    else if(!init && MainActivity.currSpeed > MainActivity.startSpeed * 1.05){
+                        go = true;
+                    }
+
+                    if(!init && MainActivity.currSpeed > MainActivity.targetSpeed){
+                        ShowTimeTableActivity.mTimeViewModel.insert(new Time(returnTime(), MainActivity.activeVehicle, String.valueOf(MainActivity.startSpeed), String.valueOf(MainActivity.targetSpeed), getCurrentDate()));
+                        time = "00:00:0";
+                        MainActivity.btnStart.setText(R.string.start);
+                        MainActivity.timerRunning = false;
+                        stop();
+                    }
                 }
+                handler.postDelayed(this, 100);
             }
         });
     }
@@ -73,5 +119,11 @@ public class Stopwatch {
 
     public TextView getTv(){
         return this.tv;
+    }
+
+    private String getCurrentDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
     }
 }

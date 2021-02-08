@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,11 +23,15 @@ public class SelectVehicleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_vehicle);
 
         TextView tvActive = findViewById(R.id.tvActive);
+        tvActive.setText(MainActivity.activeVehicle);
 
         SelectVehicleRecyclerViewAdapter adapter = new SelectVehicleRecyclerViewAdapter(ShowTimeTableActivity.mTimeViewModel.getAllTimes().getValue(), tvActive);;
         RecyclerView recyclerView = findViewById(R.id.recyclerviewSelectVehicle);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ImageButton btnBack = findViewById(R.id.btnBackSV);
+        btnBack.setOnClickListener(e -> finish());
 
         Button btnAddVehicle = findViewById(R.id.btnAddVehicle);
         btnAddVehicle.setOnClickListener(e -> {

@@ -30,14 +30,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @SuppressLint("StaticFieldLeak")
     private static TextView tvStartTarget;
 
-    private Button btnStart;
+    protected static Button btnStart;
     private final Stopwatch stopwatch = new Stopwatch();
 
-    private boolean timerRunning = false;
+    protected static boolean timerRunning = false;
 
     protected static int startSpeed = 0;
     protected static int targetSpeed = 100;
     protected static boolean unitKmh = true;
+    protected static float currSpeed = 0;
+
+    //TODO: autostart bei geschwindigkeit gehalten
 
     protected static String activeVehicle = "unnamed";
 
@@ -56,20 +59,19 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         TextView tvCurrentTimer = findViewById(R.id.tvCurrentTimer);
 
         stopwatch.setTv(tvCurrentTimer);
+        stopwatch.start();
 
         btnStart = findViewById(R.id.btnStart);
         btnStart.setOnClickListener(e -> {
-            if(timerRunning){
-                stopwatch.stop();
-                timerRunning = false;
-                btnStart.setText(R.string.start);
-                ShowTimeTableActivity.mTimeViewModel.insert(new Time(stopwatch.returnTime(), activeVehicle, String.valueOf(startSpeed), String.valueOf(targetSpeed), getCurrentDate()));
+            if(!timerRunning){
+                stopwatch.reset();
+                btnStart.setText(R.string.stop);
+                timerRunning = true;
             }
             else{
-                stopwatch.reset();
-                stopwatch.start();
-                timerRunning = true;
-                btnStart.setText(R.string.stop);
+                stopwatch.stop();
+                btnStart.setText(R.string.start);
+                timerRunning = false;
             }
         });
 
@@ -90,11 +92,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setStartTargetSpeed();
     }
 
-    private String getCurrentDate(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
-    }
 
 
 
@@ -110,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         tvSpeed.setText(String.valueOf((int) currentSpeed));
         tvSpeedUnit.setText(unit);
+        currSpeed = currentSpeed;
     }
 
     private void doStuff() {
