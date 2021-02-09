@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+        Nutzen des Viewmodels und Adapters als ShowTimeTable um nur eine einzige eindeutige Referenz zu haben
+         */
         ShowTimeTableActivity.adapter = new TimeListAdapter(new TimeListAdapter.TimeDiff());
         ShowTimeTableActivity.mTimeViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(TimeViewModel.class);
         ShowTimeTableActivity.mTimeViewModel.getAllTimes().observe(this, ShowTimeTableActivity.adapter::submitList);
@@ -57,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         stopwatch.setTv(tvCurrentTimer);
         stopwatch.start();
 
+        /*
+        Startbutton der Zeitmessung
+         */
         btnStart = findViewById(R.id.btnStart);
         btnStart.setOnClickListener(e -> {
             if(!timerRunning){
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         String unit = unitKmh ? "km/h" : "mph";
 
         if(location != null){
-            //converts meters/second to km/h or mp/h
+            //konvertiert Meter/Sekunde zu km/h oder mp/h
             currentSpeed = unitKmh ? location.getSpeed() * 3.6f : location.getSpeed() * 2.23693629f;
         }
 

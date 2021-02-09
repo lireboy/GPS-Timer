@@ -39,6 +39,9 @@ public class Stopwatch {
     }
 
     private void setup(){
+        /*
+        Initialisierung - auch Zeitvorlauf von 3 Sekunden, in welchen die Geschw. gehalten werden muss
+         */
         running = true;
         init = true;
         time = "-00:03:0";
@@ -68,6 +71,9 @@ public class Stopwatch {
             public void run()
             {
                 if(running){
+                    /*
+                    Zehntel Sekunden umgewandelt in Sekunden und Minuten
+                     */
                     secT = secTenth % 10;
                     secs = (secTenth / 10) % 60;
                     mins = (secTenth / 10 / 60) % 60;
@@ -77,6 +83,9 @@ public class Stopwatch {
                         time = String.format(Locale.getDefault(), "%02d:%02d:%01d", mins, secs, secT);
                     }
                     else if(init && !go){
+                        /*
+                        Waehrend init werden die 3 Sekunden runter gezählt
+                         */
                         secTenth-=1;
                         time = String.format(Locale.getDefault(), "-%02d:%02d:%01d", mins, secs, secT);
                     }
@@ -86,6 +95,9 @@ public class Stopwatch {
                         init = false;
                     }
 
+                    /*
+                    Toleranzbereiche für das Halten der Geschw.
+                     */
                     if(init && (MainActivity.currSpeed > MainActivity.startSpeed * 1.05 || MainActivity.currSpeed < MainActivity.startSpeed * 0.95)){
                         setup();
                     }
@@ -93,10 +105,16 @@ public class Stopwatch {
                         setup();
                     }
                     else if(!init && MainActivity.currSpeed > MainActivity.startSpeed * 1.05){
+                        /*
+                        Nach Halten der 3 Sekunden beginnt die Zeit nach Ueberschreiten der oberen Toleranzgrenze
+                         */
                         go = true;
                     }
 
                     if(!init && MainActivity.currSpeed > MainActivity.targetSpeed){
+                        /*
+                        Erreichen der Zielgeschwindigkeit
+                         */
                         ShowTimeTableActivity.mTimeViewModel.insert(new Time(returnTime(), MainActivity.activeVehicle, String.valueOf(MainActivity.startSpeed), String.valueOf(MainActivity.targetSpeed), getCurrentDate()));
                         time = "00:00:0";
                         MainActivity.btnStart.setText(R.string.start);
