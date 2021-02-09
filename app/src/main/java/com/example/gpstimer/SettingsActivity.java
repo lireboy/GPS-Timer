@@ -20,6 +20,9 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        /*
+        Switch fuer das Umschalten zwischen kmh und mph
+         */
         SwitchCompat sw_units = findViewById(R.id.switchUnitSpeed);
         sw_units.setChecked(MainActivity.unitKmh);
         updateSwitch(sw_units);
@@ -31,6 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(e -> finish());
 
+        /*
+        TextChangedListener für den Fall, dass die Geschwindigkeit auch per Tastatur gesetzt wird
+         */
         EditText editStartSpeed = findViewById(R.id.editStartSpeed);
         editStartSpeed.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,6 +81,9 @@ public class SettingsActivity extends AppCompatActivity {
         editStartSpeed.setText(String.valueOf(MainActivity.startSpeed));
         editTargetSpeed.setText(String.valueOf(MainActivity.targetSpeed));
 
+        /*
+        Buttons für das Incrementieren, bzw. Decrementieren der Geschwindigkeiten um 10
+         */
         Button btnMinusStart = findViewById(R.id.btnMinusStart);
         btnMinusStart.setOnClickListener(e-> editStartSpeed.setText(String.valueOf(Integer.parseInt(String.valueOf(editStartSpeed.getText())) - 10)));
         Button btnPlusStart = findViewById(R.id.btnPlusStart);

@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     private TextView tvSpeed;
     private TextView tvSpeedUnit;
-    @SuppressLint("StaticFieldLeak")
     private static TextView tvStartTarget;
 
     protected static Button btnStart;
@@ -39,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected static int targetSpeed = 100;
     protected static boolean unitKmh = true;
     protected static float currSpeed = 0;
-
-    //TODO: autostart bei geschwindigkeit gehalten
-
     protected static String activeVehicle = "unnamed";
 
     @Override

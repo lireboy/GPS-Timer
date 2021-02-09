@@ -13,6 +13,16 @@ public class FilterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /*
+
+        WIP
+        Zeitlich bedingt konnten wir den Filter leider nicht implementieren.
+
+
+         */
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 

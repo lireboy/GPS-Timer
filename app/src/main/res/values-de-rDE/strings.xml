@@ -4,10 +4,10 @@
     <string name="settings">Einstellungen</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
-    <string name="unit">Geschwindigkeitseinheit</string>
+    <string name="unit">Einheit</string>
     <string name="measurement">Messbereich</string>
-    <string name="startSpeed">Startgeschwindigkeit</string>
-    <string name="targetSpeed">Zielgeschwindigkeit</string>
+    <string name="startSpeed">Startgeschw.</string>
+    <string name="targetSpeed">Zielgeschw.</string>
     <string name="leaderboard">Bestenliste</string>
     <string name="sortLowTime">Niedrigste Zeit</string>
     <string name="sortHighTime">Höchste Zeit</string>
@@ -19,6 +19,6 @@
     <string name="from">Von</string>
     <string name="to">Bis</string>
     <string name="vehicles">Fahrzeuge</string>
-    <string name="selectVehicle">Fahrzeugauswahl</string>
-    <string name="addVehicle">Fahrzeug hinzufügen</string>
+    <string name="selectVehicle">KfzAuswahl</string>
+    <string name="addVehicle">Fahrzeug hinz.</string>
 </resources>

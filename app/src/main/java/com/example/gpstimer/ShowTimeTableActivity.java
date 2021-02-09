@@ -35,6 +35,9 @@ public class ShowTimeTableActivity extends AppCompatActivity {
             startActivity(filterIntent);
         });
 
+        /*
+        Spinner zur Auswahl des Sortierkriteriums
+         */
         Spinner spinner = findViewById(R.id.spinner);
         String[] items = new String[]{getString(R.string.sortLowTime), getString(R.string.sortHighTime), getString(R.string.sortMostRec), getString(R.string.sortLeastRec)};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
@@ -71,6 +74,10 @@ public class ShowTimeTableActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sortiert die Zeiten nach der gefahrenen Zeit
+     * @param lowest true = Beste Zeit zuerst, false = Langsamste Zeit zuerst
+     */
     protected void sortTime(boolean lowest){
         boolean isSorted = false;
         int m = lowest ? 1 : 0;
@@ -89,6 +96,11 @@ public class ShowTimeTableActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Sortiert die Zeiten nach einem Datum
+     * @param newest true = Neuestes Datum zuerst, false = Aeltestes Datum zuerst
+     * @throws ParseException Exception
+     */
     protected void sortDate(boolean newest) throws ParseException {
         boolean isSorted = false;
 

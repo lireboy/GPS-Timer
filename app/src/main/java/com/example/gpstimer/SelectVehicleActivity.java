@@ -36,6 +36,9 @@ public class SelectVehicleActivity extends AppCompatActivity {
         Button btnAddVehicle = findViewById(R.id.btnAddVehicle);
         btnAddVehicle.setOnClickListener(e -> {
 
+            /*
+            Builder zum schnellen und einfachen Hinzufügen von neuen Fahrzeugen
+             */
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.addVehicle);
 
@@ -43,7 +46,6 @@ public class SelectVehicleActivity extends AppCompatActivity {
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
 
-// Set up the buttons
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

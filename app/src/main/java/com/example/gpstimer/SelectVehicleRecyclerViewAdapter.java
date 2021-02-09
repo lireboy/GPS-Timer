@@ -24,17 +24,13 @@ public class SelectVehicleRecyclerViewAdapter extends RecyclerView.Adapter<Selec
 
     private List<String> vehicles = new ArrayList<>();
     @SuppressLint("StaticFieldLeak")
-    private TextView tvActive;
+    private final TextView tvActive;
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView textView;
         protected ImageButton btnConfirm;
-        private List<String> vehicles;
-        private TextView tvActive;
+        private final List<String> vehicles;
+        private final TextView tvActive;
 
         public ViewHolder(View view, List<String> vehicles, TextView tvActive) {
             super(view);
@@ -50,6 +46,9 @@ public class SelectVehicleRecyclerViewAdapter extends RecyclerView.Adapter<Selec
         }
 
 
+        /*
+        Aktivieren und Selektieren eines neuen Fahrzeugs
+         */
         @Override
         public void onClick(View view) {
             if(view.equals(btnConfirm)) {
@@ -61,10 +60,9 @@ public class SelectVehicleRecyclerViewAdapter extends RecyclerView.Adapter<Selec
     }
 
     /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     * Zeiten werden ausgelesen und jedes neue Fahrzeug in die Fahrzeugliste übernommen
+     * @param dataSet Liste von Zeiten
+     * @param tvActive Textview
      */
     public SelectVehicleRecyclerViewAdapter(List<Time> dataSet, TextView tvActive) {
         this.tvActive = tvActive;
@@ -85,27 +83,19 @@ public class SelectVehicleRecyclerViewAdapter extends RecyclerView.Adapter<Selec
         this.vehicles = vehicles;
     }
 
-    // Create new views (invoked by the layout manager)
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recyclerview_selectvitem, viewGroup, false);
 
         return new ViewHolder(view, this.vehicles, this.tvActive);
     }
-
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         viewHolder.getTextView().setText(vehicles.get(position));
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return vehicles.size();
